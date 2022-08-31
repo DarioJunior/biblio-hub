@@ -1,6 +1,8 @@
+import AppRouter from "./routes";
+
 function App() {
   return (
-    <div> HEllo WOrld</div>
+    <AppRouter />
   )
 }
 
