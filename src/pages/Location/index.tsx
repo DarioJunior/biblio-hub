@@ -1,6 +1,7 @@
 import MapBoxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import { useEffect, useState } from 'react';
 import ReactMapGL, { Marker, useControl } from 'react-map-gl';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button } from '../../components/Button';
@@ -18,7 +19,7 @@ const Geocoder = () => {
   useControl(() => ctrl)
   ctrl.on('result', (e) => {
     const coords = e.result.geometry.coordinates
-    console.log( 'COOOOOOORDS: ', coords)
+    console.log('COOOOOOORDS: ', coords)
   })
   return (
     null
@@ -28,10 +29,23 @@ const Geocoder = () => {
 export function Location() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
-  console.log('PARAMS:', searchParams.get('lat'))
+  const [lat, setLat] = useState(0)
+  const [long, setLong] = useState(0)
+
+  useEffect(() => {
+    if (searchParams.get('lat') !== '0' && lat === 0) {
+      setLat(parseInt(searchParams.get('lat') || '0'))
+    }
+
+    if (searchParams.get('long') !== '0' && lat === 0) {
+      setLong(parseInt(searchParams.get('long') || '0'))
+    }
+  }, [lat, long])
+  
+  console.log('PARAMS:', lat)
   return (
     <Container>
-      <Box css={{ width: 250}}>
+      <Box css={{ width: 250 }}>
         <img
           style={{ width: '100%' }}
           src="../../../public/assets/logo.png"
@@ -52,31 +66,43 @@ export function Location() {
       </Box>
       <Box css={{
         width: '100%',
-        height: 300,
-        border: '1px solid red'
+        height: '100%',
       }}>
         <ReactMapGL
           mapboxAccessToken={MAPBOX_TOKEN}
           initialViewState={{
-            latitude: searchParams.get('lat'),
-            longitude: searchParams.get('long'),
+            latitude: lat,
+            longitude: long,
             zoom: 8
           }}
           mapStyle="mapbox://styles/mapbox/streets-v11"
         >
           <Marker
-            latitude={searchParams.get('lat')}  
-            longitude={searchParams.get('long')}
+            latitude={lat}
+            longitude={long}
+          />
+
+          <Marker
+            latitude={lat-0.5}
+            longitude={long+0.1}
+          />
+          <Marker
+            latitude={lat+0.08}
+            longitude={long-0.45}
+          />
+          <Marker
+            latitude={lat-0.38}
+            longitude={long-1.45}
           />
           <Geocoder />
         </ReactMapGL>
       </Box>
-      <Box>
-        <Button handleClick={ () => navigate(`/servicos`)}>
+      <Box css={{ width: 200 }}>
+        <Button handleClick={() => navigate(`/servicos`)}>
           Serviços
         </Button>
       </Box>
     </Container>
-    )
+  )
 }
 

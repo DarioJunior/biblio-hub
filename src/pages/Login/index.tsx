@@ -33,7 +33,6 @@ export function Login() {
       <Box css={{
         display: "flex",
         flexDirection: "column",
-        border: '1px solid red',
         width: "100%",
       }}>
         <Input>
@@ -57,7 +56,7 @@ export function Login() {
           }
         }}
       >
-        <Button handleClick={ () => navigate(`/location?lat=${latitude}&long=${longitude}`)}>
+        <Button handleClick={ () => navigate('/')}>
           Retornar
         </Button>
         <Button handleClick={ () => navigate(`/location?lat=${latitude}&long=${longitude}`)}>
