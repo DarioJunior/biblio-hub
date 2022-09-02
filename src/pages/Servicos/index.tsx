@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom"
 import { Button } from "../../components/Button"
 import { Box, Container } from "./styles"
 
+import logo from "../../assets/logo.png"
+
 export function Servicos() {
   const navigate = useNavigate()
   return (
@@ -15,7 +17,7 @@ export function Servicos() {
           left: 0,
         }}>
         <img 
-          src="../../../public/assets/logo.png"
+          src={logo}
           alt="Logo"
           style={{ width: "100%" }}
         />

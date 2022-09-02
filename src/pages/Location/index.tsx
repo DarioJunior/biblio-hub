@@ -7,6 +7,8 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { Box, Container } from "./styles";
 
+import logo from "../../assets/logo.png";
+
 const MAPBOX_TOKEN = 'pk.eyJ1IjoiZGFyaW9qdW5pb3IiLCJhIjoiY2w3Z3IxMXdrMDdhdTNucXA5OHdheGxzaiJ9.K9C1CY4dUq-A4-WzOF4Ejw';
 
 const Geocoder = () => {
@@ -48,7 +50,7 @@ export function Location() {
       <Box css={{ width: 250 }}>
         <img
           style={{ width: '100%' }}
-          src="../../../public/assets/logo.png"
+          src={logo}
           alt="Logo"
         />
       </Box>

@@ -2,13 +2,15 @@ import { useNavigate } from "react-router-dom"
 import { Button } from "../../components/Button"
 import { Box, Container } from "./styles"
 
+import logo from "../../assets/logo.png"
+
 export function Home() {
   const navigate = useNavigate()
   return (
     <Container>
       <Box css={{ width: 250}}>
         <img
-          src="../../../public/assets/logo.png"
+          src={logo}
           alt="Logo"
         />
       </Box>

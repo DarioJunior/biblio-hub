@@ -3,7 +3,10 @@ import { useNavigate } from "react-router-dom"
 import { Button } from "../../components/Button"
 import { Box, Container, Input } from "./styles"
 
+import logo from "../../assets/logo.png"
+
 export function Cadastro() {
+
   const navigate = useNavigate()
 
   const [latitude, setLatitude] = useState(0)
@@ -26,7 +29,7 @@ export function Cadastro() {
           left: 0,
         }}>
         <img 
-          src="../../../public/assets/logo.png"
+          src={logo}
           alt="Logo"
           style={{ width: "100%" }}
         />

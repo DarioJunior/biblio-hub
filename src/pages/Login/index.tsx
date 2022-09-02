@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom"
 import { Button } from "../../components/Button"
 import { Box, Container, Input } from "./styles"
 
+import logo from "../../assets/logo.png"
+
 export function Login() {
   const navigate = useNavigate()
 
@@ -25,7 +27,7 @@ export function Login() {
           left: 0,
         }}>
         <img 
-          src="../../../public/assets/logo.png"
+          src={logo}
           alt="Logo"
           style={{ width: "100%" }}
         />
@@ -33,7 +35,6 @@ export function Login() {
       <Box css={{
         display: "flex",
         flexDirection: "column",
-        border: '1px solid red',
         width: "100%",
       }}>
         <Input>
