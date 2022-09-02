@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import {
   BrowserRouter as Router, Route, Routes
 } from 'react-router-dom'
@@ -7,13 +8,22 @@ import { Location } from '../pages/Location'
 import { Login } from '../pages/Login'
 import { Servicos } from '../pages/Servicos'
 
+
 function AppRouter() {
+  const [latitude, setLatitude] = useState(0)
+  const [longitude, setLongitude] = useState(0)
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setLatitude(position.coords.latitude)
+      setLongitude(position.coords.longitude)
+    })
+  }, [])
  return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/location" element={<Location />} />
+        <Route path="/location" element={<Location initialLat={latitude} initialLong={longitude} />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/servicos" element={<Servicos />} />
       </Routes>

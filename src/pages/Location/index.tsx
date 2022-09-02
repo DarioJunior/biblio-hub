@@ -2,7 +2,7 @@ import MapBoxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useEffect, useState } from 'react';
-import ReactMapGL, { Marker, useControl } from 'react-map-gl';
+import ReactMapGL, { Marker } from 'react-map-gl';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { Box, Container } from "./styles";
@@ -14,25 +14,26 @@ const MAPBOX_TOKEN = 'pk.eyJ1IjoiZGFyaW9qdW5pb3IiLCJhIjoiY2w3Z3IxMXdrMDdhdTNucXA
 const Geocoder = () => {
   const ctrl = new MapBoxGeocoder({
     accessToken: MAPBOX_TOKEN,
-    marker: true,
+    marker: false,
     collapsed: true
   })
 
-  useControl(() => ctrl)
-  ctrl.on('result', (e) => {
-    const coords = e.result.geometry.coordinates
-    console.log('COOOOOOORDS: ', coords)
-  })
+  // useControl(() => ctrl)
+//   ctrl.on('result', (e) => {
+//     const coords = e.result.geometry.coordinates
+//   })
   return (
     null
   )
 }
 
-export function Location() {
+export function Location({initialLat, initialLong}: any) {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const [lat, setLat] = useState(0)
   const [long, setLong] = useState(0)
+
+  console.log(initialLat, initialLong)
 
   useEffect(() => {
     if (searchParams.get('lat') !== '0' && lat === 0) {
@@ -44,7 +45,6 @@ export function Location() {
     }
   }, [lat, long])
   
-  console.log('PARAMS:', lat)
   return (
     <Container>
       <Box css={{ width: 250 }}>
@@ -73,28 +73,28 @@ export function Location() {
         <ReactMapGL
           mapboxAccessToken={MAPBOX_TOKEN}
           initialViewState={{
-            latitude: lat,
-            longitude: long,
+            latitude: initialLat,
+            longitude: initialLong,
             zoom: 8
           }}
           mapStyle="mapbox://styles/mapbox/streets-v11"
         >
           <Marker
-            latitude={lat}
-            longitude={long}
+            latitude={lat-0.5}
+            longitude={long-1}
           />
 
           <Marker
             latitude={lat-0.5}
-            longitude={long+0.1}
+            longitude={long-0.5}
           />
           <Marker
-            latitude={lat+0.08}
-            longitude={long-0.45}
+            latitude={lat-0.05}
+            longitude={long-0.75}
           />
           <Marker
             latitude={lat-0.38}
-            longitude={long-1.45}
+            longitude={long-1.15}
           />
           <Geocoder />
         </ReactMapGL>
