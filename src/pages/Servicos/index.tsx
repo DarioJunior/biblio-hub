@@ -38,7 +38,7 @@ export function Servicos() {
       </Box>
 
       <Box css={{ width: 200 }}>
-        <Button handleClick={() => navigate('/cadastro')}>
+        <Button handleClick={() => navigate('/indicacao')}>
           Indicação de Materiais
         </Button>
       </Box>
@@ -46,4 +46,3 @@ export function Servicos() {
     </Container>
   )
 }
-

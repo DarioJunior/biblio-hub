@@ -77,7 +77,7 @@ export function Cadastro() {
           }
         }}
       >
-        <Button handleClick={ () => navigate(`/location?lat=${latitude}&long=${longitude}`)}>
+        <Button handleClick={ () => navigate(`/`)}>
           Retornar
         </Button>
         <Button handleClick={ () => navigate(`/location?lat=${latitude}&long=${longitude}`)}>

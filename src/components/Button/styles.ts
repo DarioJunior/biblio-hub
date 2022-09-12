@@ -12,6 +12,11 @@ export const Container = styled('button', {
 
   '&:hover': {
     cursor: 'pointer'
+  },
+
+  '&:disabled': {
+    cursor: 'not-allowed',
+    opacity: '0.4'
   }
 })
 

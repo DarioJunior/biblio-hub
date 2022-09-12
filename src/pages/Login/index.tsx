@@ -4,6 +4,8 @@ import { Button } from "../../components/Button"
 import { Box, Container, Input } from "./styles"
 
 import logo from "../../assets/logo.png"
+const USER_NAME = "teste"
+const PASSWORD = "teste123"
 
 export function Login() {
   const navigate = useNavigate()
@@ -16,6 +18,16 @@ export function Login() {
       setLongitude(position.coords.longitude)
     })
   }, [])
+  
+  const [userName, setUserName] = useState('')
+  const [password, setPassword] = useState('')
+  const [disabled, setDisabled] = useState(true)
+  
+  useEffect(() => {
+    if(userName === USER_NAME && password === PASSWORD) {
+      setDisabled(false)
+    }
+  }, [password, userName])
   return (
     <Container>
       <Box 
@@ -39,11 +51,11 @@ export function Login() {
       }}>
         <Input>
           CPF:
-          <input type="text" />
+          <input type="text" onChange={(e) => setUserName(e.target.value)} value={userName}/>
         </Input>
         <Input>
           SENHA:
-          <input type="text" />
+          <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} />
         </Input>
       </Box>
       <Box 
@@ -58,10 +70,10 @@ export function Login() {
           }
         }}
       >
-        <Button handleClick={ () => navigate(`/location?lat=${latitude}&long=${longitude}`)}>
+        <Button handleClick={ () => navigate(`/`)}>
           Retornar
         </Button>
-        <Button handleClick={ () => navigate(`/location?lat=${latitude}&long=${longitude}`)}>
+        <Button isDisabled={disabled} handleClick={ () => navigate(`/location?lat=${latitude}&long=${longitude}`)}>
           Avançar
         </Button>
       </Box>
