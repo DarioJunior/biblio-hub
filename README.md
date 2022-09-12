@@ -19,4 +19,18 @@ Projeto front-end desenvolvido em ReactJS e Typescript, utilizando o framework d
 - Para logar há um usuário teste criado: CPF: `12345678900` senha: `teste123`;
 - Não esqueça de aceitar a geolocalização do navegador;
 
+# Grupo 06
+ - NICOLE BARROS DOS SANTOS
+ - DARIO CEZAR MOREIRA TORRES JUNIOR
+ - LEONARDO MARCAL
+ - GABRIELA MARIA DOS REIS
+ - CRISTIAN RAFAEL ALVES DE MORAES
+ - ANDRE TERUO YAMAOKA ROSALEM
+ - LUIZ VINICIUS BATISTA JESUS DOS SANTOS
+ 
+ 
+ 
+ 
+ 
+ 
 
