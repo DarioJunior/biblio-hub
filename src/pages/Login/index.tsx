@@ -4,7 +4,7 @@ import { Button } from "../../components/Button"
 import { Box, Container, Input } from "./styles"
 
 import logo from "../../assets/logo.png"
-const USER_NAME = "teste"
+const USER_NAME = "12345678900"
 const PASSWORD = "teste123"
 
 export function Login() {
@@ -18,27 +18,27 @@ export function Login() {
       setLongitude(position.coords.longitude)
     })
   }, [])
-  
+
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [disabled, setDisabled] = useState(true)
-  
+
   useEffect(() => {
-    if(userName === USER_NAME && password === PASSWORD) {
+    if (userName === USER_NAME && password === PASSWORD) {
       setDisabled(false)
     }
   }, [password, userName])
   return (
     <Container>
-      <Box 
-        css={{ 
+      <Box
+        css={{
           width: 100,
           position: 'absolute',
           margin: '15px 0',
           top: 0,
           left: 0,
         }}>
-        <img 
+        <img
           src={logo}
           alt="Logo"
           style={{ width: "100%" }}
@@ -51,14 +51,14 @@ export function Login() {
       }}>
         <Input>
           CPF:
-          <input type="text" onChange={(e) => setUserName(e.target.value)} value={userName}/>
+          <input type="text" onChange={(e) => setUserName(e.target.value)} value={userName} />
         </Input>
         <Input>
           SENHA:
           <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} />
         </Input>
       </Box>
-      <Box 
+      <Box
         css={{
           width: "100%",
           display: "flex",
@@ -70,10 +70,10 @@ export function Login() {
           }
         }}
       >
-        <Button handleClick={ () => navigate(`/`)}>
+        <Button handleClick={() => navigate(`/`)}>
           Retornar
         </Button>
-        <Button isDisabled={disabled} handleClick={ () => navigate(`/location?lat=${latitude}&long=${longitude}`)}>
+        <Button isDisabled={disabled} handleClick={() => navigate(`/location?lat=${latitude}&long=${longitude}`)}>
           Avançar
         </Button>
       </Box>

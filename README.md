@@ -15,5 +15,8 @@ _recomendações:_
 
 Projeto front-end desenvolvido em ReactJS e Typescript, utilizando o framework de estilização CSS-in-JS [`Stitches`](https://stitches.dev/) e api de geolocalização [MapBox](https://docs.mapbox.com/api/overview/) para localizar o usuário e simular posições de bibliotecas próximos a posição, Google Books API para simular indicações de livros em bibliotecas próximas.
 
-#
+## OBSERVAÇÕES: 
+- Para logar há um usuário teste criado: CPF: `12345678900` senha: `teste123`;
+- Não esqueça de aceitar a geolocalização do navegador;
+
 
