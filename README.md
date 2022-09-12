@@ -1,5 +1,5 @@
 # biblio-hub
-[LINK DO DEPLOY](biblio-hub.vercel.app)
+([LINK DO DEPLOY](https://biblio-hub.vercel.app/))
 
 Aplicativo desenvolvido para o Projeto Integrador de Dispositivos Web e Móveis do curso de Análise e Desenvolvimento de Sistemas - SENAC.
 
